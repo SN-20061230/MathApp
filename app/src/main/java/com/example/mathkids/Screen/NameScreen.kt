@@ -19,7 +19,8 @@ import androidx.navigation.NavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NameScreen(navController: NavController, mode: String) {
-    val name = remember { mutableStateOf("Guest") }
+    val name = remember { mutableStateOf("Mehmon") }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,

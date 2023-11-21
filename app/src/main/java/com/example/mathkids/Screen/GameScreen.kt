@@ -34,7 +34,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun GameScreen(navController: NavController, mode: String, name: String) {
     val context = LocalContext.current
-    val limit = 10
+    val limit = 20
     var tasks by remember { mutableIntStateOf(1) }
     var hint by remember { mutableStateOf(Game().getRandom(mode)) }
     val time = remember { mutableIntStateOf(limit) }
@@ -55,14 +55,6 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.background),
-            contentDescription = "Background",
-            contentScale = ContentScale.FillBounds,
-            modifier = Modifier.matchParentSize(),
-        )
-    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -77,7 +69,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
             Text(
                 text = hint.first,
                 fontSize = 40.sp,
-                color = Color.White,
+                color = Color.Black,
                 fontWeight = FontWeight.Bold,
             )
         }
@@ -90,7 +82,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
             Text(
                 text = "$score Coin",
                 fontSize = 30.sp,
-                color = Color.White,
+                color = Color.Black,
                 fontWeight = FontWeight.Bold,
             )
         }
@@ -103,7 +95,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
             Text(
                 text = "00:${time.intValue}",
                 fontSize = 27.sp,
-                color = Color.White,
+                color = Color.Black,
                 fontWeight = FontWeight.Bold,
             )
         }
@@ -118,46 +110,6 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                     .padding(bottom = 45.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                Button(
-                    modifier = Modifier
-                        .height(70.dp)
-                        .width(70.dp),
-                    onClick = {
-                        if (hint.second == "*") {
-                            score++
-                        } else {
-                            score--
-                        }
-                        hint = Game().getRandom(mode)
-                        tasks++
-                    },
-                ) {
-                    Text(
-                        text = "*",
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold,
-                    )
-                }
-                Button(
-                    modifier = Modifier
-                        .height(70.dp)
-                        .width(70.dp),
-                    onClick = {
-                        if (hint.second == "/") {
-                            score++
-                        } else {
-                            score--
-                        }
-                        hint = Game().getRandom(mode)
-                        tasks++
-                    },
-                ) {
-                    Text(
-                        text = "/",
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold,
-                    )
-                }
                 Button(
                     modifier = Modifier
                         .height(70.dp)
@@ -194,6 +146,46 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                 ) {
                     Text(
                         text = "-",
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+                Button(
+                    modifier = Modifier
+                        .height(70.dp)
+                        .width(70.dp),
+                    onClick = {
+                        if (hint.second == "*") {
+                            score++
+                        } else {
+                            score--
+                        }
+                        hint = Game().getRandom(mode)
+                        tasks++
+                    },
+                ) {
+                    Text(
+                        text = "*",
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+                Button(
+                    modifier = Modifier
+                        .height(70.dp)
+                        .width(70.dp),
+                    onClick = {
+                        if (hint.second == "/") {
+                            score++
+                        } else {
+                            score--
+                        }
+                        hint = Game().getRandom(mode)
+                        tasks++
+                    },
+                ) {
+                    Text(
+                        text = "/",
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )
