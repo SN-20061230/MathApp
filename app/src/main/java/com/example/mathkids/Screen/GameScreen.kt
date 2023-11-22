@@ -1,7 +1,5 @@
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,14 +19,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.mathkids.R
 import kotlinx.coroutines.delay
 
 @Composable
@@ -67,7 +62,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
-                text = hint.first,
+                text = hint.first.first,
                 fontSize = 40.sp,
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
@@ -115,7 +110,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                         .height(70.dp)
                         .width(70.dp),
                     onClick = {
-                        if (hint.second == "+") {
+                        if (hint.first.second == hint.second[0]) {
                             score++
                         } else {
                             score--
@@ -125,7 +120,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                     },
                 ) {
                     Text(
-                        text = "+",
+                        text = hint.second[0],
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )
@@ -135,7 +130,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                         .height(70.dp)
                         .width(70.dp),
                     onClick = {
-                        if (hint.second == "-") {
+                        if (hint.first.second == hint.second[1]) {
                             score++
                         } else {
                             score--
@@ -145,7 +140,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                     },
                 ) {
                     Text(
-                        text = "-",
+                        text = hint.second[1],
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )
@@ -155,7 +150,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                         .height(70.dp)
                         .width(70.dp),
                     onClick = {
-                        if (hint.second == "*") {
+                        if (hint.first.second == hint.second[2]) {
                             score++
                         } else {
                             score--
@@ -165,7 +160,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                     },
                 ) {
                     Text(
-                        text = "*",
+                        text = hint.second[2],
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )
@@ -175,7 +170,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                         .height(70.dp)
                         .width(70.dp),
                     onClick = {
-                        if (hint.second == "/") {
+                        if (hint.first.second == hint.second[3]) {
                             score++
                         } else {
                             score--
@@ -185,7 +180,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                     },
                 ) {
                     Text(
-                        text = "/",
+                        text = hint.second[3],
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )

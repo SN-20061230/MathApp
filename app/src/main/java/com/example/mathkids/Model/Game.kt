@@ -1,47 +1,44 @@
 
 class Game {
-    fun getRandom(mode: String): Pair<String, String> {
+    fun getRandom(mode: String): Pair<Pair<String, String>, List<String>> {
         var first = 0
         var second = 0
         when (mode) {
-            "easy" -> {
-                first = (1..10).random()
-                second = (1..10).random()
+            "*" -> {
+                first = (1..100).random()
+                second = (1..100).random()
             }
 
-            "medium" -> {
-                first = (1..50).random()
-                second = (1..50).random()
+            "/" -> {
+                first = (1..100).random()
+                second = (1..100).random()
             }
 
-            "hard" -> {
+            "+" -> {
+                first = (1..100).random()
+                second = (1..100).random()
+            }
+            "-" -> {
                 first = (1..100).random()
                 second = (1..100).random()
             }
         }
-        val operators = listOf("*", "/", "+", "-")
-        val operator = operators.random()
-        if (operator == "/") {
+        if (mode == "/") {
             while (first % second != 0) {
-                when (mode) {
-                    "easy" -> {
-                        first = (1..10).random()
-                        second = (1..10).random()
-                    }
-
-                    "medium" -> {
-                        first = (1..50).random()
-                        second = (1..50).random()
-                    }
-
-                    "hard" -> {
-                        first = (1..100).random()
-                        second = (1..100).random()
-                    }
-                }
+                first = (1..100).random()
+                second = (1..100).random()
             }
         }
-        return Pair("$first _ $second = ${solve(first, second, operator)}", operator)
+        var one = (1..100).random().toString()
+        var two = (1..100).random().toString()
+        var three = (1..100).random().toString()
+        val ans = solve(first, second, mode)
+        while (one == ans) one = (1..100).random().toString()
+        while (two == ans) two = (1..100).random().toString()
+        while (three == ans) three = (1..100).random().toString()
+        val list = listOf(one, two, three, ans)
+        list.shuffled()
+        return Pair(Pair("$first $mode $second = ?", solve(first, second, mode)), list)
     }
 
     private fun solve(first: Int, second: Int, operator: String): String {
