@@ -1,5 +1,7 @@
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -19,11 +22,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.mathkids.R
 import kotlinx.coroutines.delay
 
 @Composable
@@ -50,7 +56,14 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
         }
     }
 
-
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.bg6),
+            contentDescription = "Background",
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier.matchParentSize(),
+        )
+    }
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -58,13 +71,13 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 45.dp),
+                .padding(top = 100.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
                 text = hint.first.first,
                 fontSize = 40.sp,
-                color = Color.Black,
+                color = Color.White,
                 fontWeight = FontWeight.Bold,
             )
         }
@@ -77,7 +90,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
             Text(
                 text = "$score Coin",
                 fontSize = 30.sp,
-                color = Color.Black,
+                color = Color.White,
                 fontWeight = FontWeight.Bold,
             )
         }
@@ -90,7 +103,7 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
             Text(
                 text = "00:${time.intValue}",
                 fontSize = 27.sp,
-                color = Color.Black,
+                color = Color.White,
                 fontWeight = FontWeight.Bold,
             )
         }
@@ -102,13 +115,15 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 45.dp),
+                    .padding(bottom = 15.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
                 Button(
                     modifier = Modifier
-                        .height(70.dp)
-                        .width(70.dp),
+                        .height(150.dp)
+                        .width(150.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Yellow),
+
                     onClick = {
                         if (hint.first.second == hint.second[0]) {
                             score++
@@ -121,14 +136,16 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                 ) {
                     Text(
                         text = hint.second[0],
+                        color = Color.Green,
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )
                 }
                 Button(
                     modifier = Modifier
-                        .height(70.dp)
-                        .width(70.dp),
+                        .height(150.dp)
+                        .width(150.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Yellow),
                     onClick = {
                         if (hint.first.second == hint.second[1]) {
                             score++
@@ -141,14 +158,26 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                 ) {
                     Text(
                         text = hint.second[1],
+                        color = Color.Green,
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )
                 }
+
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 45.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+            ){
+
                 Button(
                     modifier = Modifier
-                        .height(70.dp)
-                        .width(70.dp),
+                        .height(150.dp)
+                        .width(150.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Yellow),
+
                     onClick = {
                         if (hint.first.second == hint.second[2]) {
                             score++
@@ -161,14 +190,17 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                 ) {
                     Text(
                         text = hint.second[2],
+                        color = Color.Green,
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )
                 }
                 Button(
                     modifier = Modifier
-                        .height(70.dp)
-                        .width(70.dp),
+                        .height(150.dp)
+                        .width(150.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Yellow),
+
                     onClick = {
                         if (hint.first.second == hint.second[3]) {
                             score++
@@ -181,11 +213,16 @@ fun GameScreen(navController: NavController, mode: String, name: String) {
                 ) {
                     Text(
                         text = hint.second[3],
+                        color = Color.Green,
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                     )
                 }
             }
+
+
+
+
         }
     }
 }

@@ -5,28 +5,28 @@ class Game {
         var second = 0
         when (mode) {
             "*" -> {
-                first = (1..100).random()
-                second = (1..100).random()
+                first = (1..10).random()
+                second = (1..10).random()
             }
 
-            "/" -> {
-                first = (1..100).random()
-                second = (1..100).random()
+            "÷" -> {
+                first = (1..10).random()
+                second = (1..10).random()
             }
 
             "+" -> {
-                first = (1..100).random()
-                second = (1..100).random()
+                first = (1..10).random()
+                second = (1..10).random()
             }
             "-" -> {
-                first = (1..100).random()
-                second = (1..100).random()
+                first = (1..10).random()
+                second = (1..10).random()
             }
         }
-        if (mode == "/") {
+        if (mode == "÷") {
             while (first % second != 0) {
-                first = (1..100).random()
-                second = (1..100).random()
+                first = (1..10).random()
+                second = (1..10).random()
             }
         }
         var one = (1..100).random().toString()
@@ -44,7 +44,7 @@ class Game {
     private fun solve(first: Int, second: Int, operator: String): String {
         return when (operator) {
             "*" -> "${first * second}"
-            "/" -> "${first / second}"
+            "÷" -> "${first / second}"
             "+" -> "${first + second}"
             "-" -> "${first - second}"
             else -> {
